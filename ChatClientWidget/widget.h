@@ -17,6 +17,9 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 
+protected:
+    bool eventFilter(QObject *obj, QEvent *event) override;
+
 private slots:
     void on_connectBtn_clicked();         // 连接服务器
     void on_sendBtn_clicked();            // 发送消息
@@ -28,6 +31,7 @@ private:
     Ui::Widget *ui;
     QTcpSocket *tcpSocket;
     bool isConnected;
+    QString serverTip;
 };
 
 #endif // CHATCLIENTWIDGET_H
